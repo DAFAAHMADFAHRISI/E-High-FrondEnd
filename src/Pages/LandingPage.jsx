@@ -1,37 +1,10 @@
-import {
-  FaHome,
-  FaInfoCircle,
-  FaBook,
-  FaSignInAlt,
-  FaGraduationCap,
-  FaUserCheck,
-  FaClipboardList,
-} from "react-icons/fa";
+import { FaUserCheck, FaClipboardList, FaBook } from "react-icons/fa";
+import Footer from "../layout/Footer";
 
 export default function LandingPage() {
   return (
-    <div className="bg-[#0F1A2A] text-white ">
-      <header className="bg-[#1B2B44] p-4 flex justify-between items-center shadow-md w-full">
-        <div className="text-white font-bold text-lg">
-          Santoso
-          <p className="text-xs font-light">Education Assistant</p>
-        </div>
-        <nav className="space-x-6 flex text-white text-sm font-semibold">
-          <a href="#" className="hover:text-gray-400 transition">
-            Home
-          </a>
-          <a href="#" className="hover:text-gray-400 transition">
-            About
-          </a>
-          <a href="#" className="hover:text-gray-400 transition">
-            Tutorial
-          </a>
-          <a href="#" className="hover:text-gray-400 transition">
-            Login
-          </a>
-        </nav>
-      </header>
-      <main className="p-1 w-full bg-amber-50">
+    <div className="flex flex-col min-h-screen w-screen">
+      <main className="flex-grow w-full bg-amber-50">
         <section className="flex flex-col md:flex-row items-center max-w-6xl mx-auto bg-[#F5EDE4] p-10 rounded-lg">
           <div className="md:w-1/2 text-[#1B2B44]">
             <h2 className="font-bold text-3xl md:text-4xl leading-tight">
@@ -96,29 +69,6 @@ export default function LandingPage() {
           </div>
         </section>
       </main>
-
-      <footer className="bg-[#1B2B44] text-white text-center p-6 mt-8 w-full border-t-4">
-        <div className="flex flex-col md:flex-row justify-between max-w-6xl mx-auto">
-          <div className="mb-4 md:mb-0 text-left">
-            <h4 className="font-bold">LuluSin</h4>
-            <p>Education Academy</p>
-            <p>Learning Untuk Lulus Seleksi Nasional</p>
-          </div>
-          <div className="mb-4 md:mb-0 text-left">
-            <p>Jl. Raya Lenteng No.km, RW.2,</p>
-            <p>Aredake, Batuan, Kec. Batuan,</p>
-            <p>Kabupaten Sumenep, Jawa Timur 80552</p>
-          </div>
-          <div className="text-left">
-            <p>Hubungi Kami :</p>
-            <p>Email: dawaru839@gmail.com</p>
-            <p>Kontak: +62 812-3516-3528</p>
-          </div>
-        </div>
-        <div className="mt-4 text-sm">
-          © 2025 Faidur. All Rights Reserved PT. Mesir Timur setengah
-        </div>
-      </footer>
     </div>
   );
 }
