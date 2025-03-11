@@ -24,7 +24,7 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {[
               {
-                title: "Learning Untuk Lulus Seleksi Nasional",
+                title: " Learning Untuk Lulus Seleksi Nasional",
                 text: "Persiapan SNBT kini lebih mudah dan terarah! Dengan materi lengkap, tryout interaktif, serta analisis skor yang akurat, Lulusin siap membantumu melewati seleksi masuk perguruan tinggi dengan percaya diri.",
               },
               {
