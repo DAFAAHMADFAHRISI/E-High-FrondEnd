@@ -12,6 +12,14 @@ import SiswaTryoutHasil from "./Pages/Siswa/TryoutHasil";
 import Dashboard from "./Pages/Admin/DashBoard";
 import DetailMurid from "./Pages/Admin/DetailMurid";
 import DetailGuru from "./Pages/Admin/DetailGuru";
+import Home from "./Pages/Guru/Home";
+import GuruTryout from "./Pages/Guru/GuruTryout";
+import CreateTryout from "./Pages/Guru/CreateTryout";
+import EditTryout from "./Pages/Guru/EditTryout";
+import GuruTryoutDetail from "./Pages/Guru/GuruTryOutDetail";
+import GuruTryoutSubjek from "./Pages/Guru/GuruTryoutSubjek";
+import CreateTryoutSubjek from "./Pages/Guru/CreateTryoutSubjek";
+import EditTryoutSubjek from "./Pages/Guru/EditTryoutSubjek";
 
 export default function App() {
   return (
@@ -48,6 +56,23 @@ export default function App() {
                 <Route
                   path="/Siswa/TryoutHasil"
                   element={<SiswaTryoutHasil />}
+                />
+                <Route path="/Guru/Home" element={<Home />} />
+                <Route path="/Guru/Tryout" element={<GuruTryout />} />
+                <Route path="/Guru/CreateTryout" element={<CreateTryout />} />
+                <Route path="/Guru/EditTryout" element={<EditTryout />} />
+                <Route path="/Guru/Tryout/id" element={<GuruTryoutDetail />} />
+                <Route
+                  path="/Guru/Tryout/id/subjek"
+                  element={<GuruTryoutSubjek />}
+                />
+                <Route
+                  path="/Guru/CreateTryout/id/subjek"
+                  element={<CreateTryoutSubjek />}
+                />
+                <Route
+                  path="/Guru/EditTryout/id/subjek"
+                  element={<EditTryoutSubjek />}
                 />
               </Routes>
             </Layout>
