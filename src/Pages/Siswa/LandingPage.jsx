@@ -1,7 +1,7 @@
 import { FaUserCheck, FaClipboardList, FaBook } from "react-icons/fa";
-import Footer from "../layout/Footer";
 
-export default function LandingPage() {
+
+export default function SiswaLandingPage() {
   return (
     <div className="flex flex-col min-h-screen w-screen">
       <main className="flex-grow w-full bg-amber-50">
