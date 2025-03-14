@@ -20,6 +20,8 @@ import GuruTryoutDetail from "./Pages/Guru/GuruTryOutDetail";
 import GuruTryoutSubjek from "./Pages/Guru/GuruTryoutSubjek";
 import CreateTryoutSubjek from "./Pages/Guru/CreateTryoutSubjek";
 import EditTryoutSubjek from "./Pages/Guru/EditTryoutSubjek";
+import EditSoalCreatePembahasan from "./Pages/Guru/EditSoalCreatePembahasan";
+import EditPembahasanSoalTryout from "./Pages/Guru/EditPembahasanSoalTryout";
 
 export default function App() {
   return (
@@ -73,6 +75,14 @@ export default function App() {
                 <Route
                   path="/Guru/EditTryout/id/subjek"
                   element={<EditTryoutSubjek />}
+                />
+                 <Route
+                  path="/Guru/EditSoal/CreatePembahasan"
+                  element={<EditSoalCreatePembahasan />}
+                />
+                 <Route
+                  path="/Guru/tryout/:id/:subjek/ediit_soal/edit_pemabahasan"
+                  element={<EditSoalCreatePembahasan />}
                 />
               </Routes>
             </Layout>

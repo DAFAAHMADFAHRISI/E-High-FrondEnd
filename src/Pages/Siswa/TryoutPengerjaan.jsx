@@ -8,7 +8,7 @@ export default function SiswaTryoutPengerjaan() {
   const [currentQuestion, setCurrentQuestion] = useState(1)
   const [selectedAnswer, setSelectedAnswer] = useState(null)
   const [timeLeft, setTimeLeft] = useState({ minutes: 32, seconds: 56 })
-  const [answeredQuestions, setAnsweredQuestions] = useState([1, 5, 10, 15])
+  const [answeredQuestions, setAnsweredQuestions] = useState([])
 
   // Total number of questions
   const totalQuestions = 30
@@ -28,6 +28,14 @@ export default function SiswaTryoutPengerjaan() {
   const goToQuestion = (questionNumber) => {
     setCurrentQuestion(questionNumber)
     setSelectedAnswer(null)
+  }
+
+  // Function to handle answer selection
+  const handleAnswerSelect = (index) => {
+    setSelectedAnswer(index)
+    if (!answeredQuestions.includes(currentQuestion)) {
+      setAnsweredQuestions((prev) => [...prev, currentQuestion])
+    }
   }
 
   // Timer effect
@@ -161,7 +169,7 @@ export default function SiswaTryoutPengerjaan() {
                   } ${
                     answeredQuestions.includes(i + 1)
                       ? "bg-gradient-to-br from-green-400 to-green-500 text-black font-medium"
-                      : "bg-gradient-to-br from-[#2C4A6E] to-[#3A5A80]"
+                      : "bg-[#2C4A6E]"
                   }`}
                 >
                   {i + 1}
@@ -176,7 +184,7 @@ export default function SiswaTryoutPengerjaan() {
                   <span>Terjawab: {answeredQuestions.length}</span>
                 </div>
                 <div className="flex items-center">
-                  <div className="w-3 h-3 rounded-full bg-[#3A5A80] mr-1"></div>
+                  <div className="w-3 h-3 rounded-full bg-[#2C4A6E] mr-1"></div>
                   <span>Belum: {totalQuestions - answeredQuestions.length}</span>
                 </div>
               </div>
@@ -238,16 +246,11 @@ export default function SiswaTryoutPengerjaan() {
                     transition: { type: "spring", stiffness: 300 },
                   }}
                   whileTap={{ scale: 0.97 }}
-                  onClick={() => {
-                    setSelectedAnswer(index)
-                    if (!answeredQuestions.includes(currentQuestion)) {
-                      setAnsweredQuestions((prev) => [...prev, currentQuestion])
-                    }
-                  }}
+                  onClick={() => handleAnswerSelect(index)}
                   className={`p-4 rounded-xl text-left flex items-center shadow-md relative overflow-hidden ${
                     selectedAnswer === index
                       ? "bg-gradient-to-br from-green-400 to-green-500 text-black"
-                      : "bg-gradient-to-br from-[#2C4A6E] to-[#3A5A80]"
+                      : "bg-[#2C4A6E]"
                   }`}
                 >
                   <div className="absolute top-0 right-0 w-20 h-20 bg-white rounded-bl-full opacity-10"></div>
@@ -286,9 +289,7 @@ export default function SiswaTryoutPengerjaan() {
                 onClick={() => navigateQuestion("prev")}
                 disabled={currentQuestion === 1}
                 className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium shadow-md ${
-                  currentQuestion === 1
-                    ? "bg-gray-500 cursor-not-allowed opacity-50"
-                    : "bg-gradient-to-r from-[#1E3A5F] to-[#2E4A7F]"
+                  currentQuestion === 1 ? "bg-gray-500 cursor-not-allowed opacity-50" : "bg-[#2C4A6E]"
                 }`}
               >
                 <ArrowLeft size={16} />
@@ -304,9 +305,7 @@ export default function SiswaTryoutPengerjaan() {
                 onClick={() => navigateQuestion("next")}
                 disabled={currentQuestion === totalQuestions}
                 className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium shadow-md ${
-                  currentQuestion === totalQuestions
-                    ? "bg-gray-500 cursor-not-allowed opacity-50"
-                    : "bg-gradient-to-r from-[#1E3A5F] to-[#2E4A7F]"
+                  currentQuestion === totalQuestions ? "bg-gray-500 cursor-not-allowed opacity-50" : "bg-[#2C4A6E]"
                 }`}
               >
                 Selanjutnya
