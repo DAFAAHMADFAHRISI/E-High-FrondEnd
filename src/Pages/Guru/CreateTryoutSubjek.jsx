@@ -1,4 +1,8 @@
+"use client";
+
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FiPlus, FiX, FiArrowRight, FiArrowLeft } from "react-icons/fi";
 
 const CreateTryoutSubjek = () => {
   const [options, setOptions] = useState(["", "", "", "", ""]);
@@ -7,51 +11,155 @@ const CreateTryoutSubjek = () => {
     setOptions([...options, ""]);
   };
 
+  const removeOption = (indexToRemove) => {
+    if (options.length > 2) {
+      setOptions(options.filter((_, index) => index !== indexToRemove));
+    }
+  };
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        when: "beforeChildren",
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: -10 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { type: "spring", stiffness: 100 },
+    },
+  };
+
   return (
-    <div className="flex justify-center items-center min-h-screen bg-amber-50 w-screen">
-      <div className="border-2 border-blue-500 rounded-lg p-6 w-full max-w-xl bg-white shadow-md">
-        <h2 className="text-lg font-semibold mb-4">Buat Soal Tryout</h2>
-        <label className="block mb-2 text-sm font-medium text-blue-900">
-          Soal
-        </label>
-        <textarea className="w-full p-2 border border-blue-600 bg-blue-50 rounded-md h-24 focus:outline-blue-500"></textarea>
-
-
-        <label className="block mt-4 mb-2 text-sm font-bold text-blue-900">
-          Opsi
-        </label>
-        <button
-          className="bg-blue-500 text-white px-3 py-1 rounded-md mb-3 text-sm hover:bg-blue-600"
-          onClick={addOption}
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-b from-amber-50 to-amber-100 w-screen p-4">
+      <motion.div
+        className="border-2 border-blue-400 rounded-2xl p-8 w-full max-w-xl bg-white shadow-lg"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
+        <motion.h2
+          className="text-xl font-bold mb-6 text-gray-800 relative"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
         >
-          Buat Opsi
-        </button>
-        <div className="border border-blue-700 bg-blue-100 p-3 rounded-md space-y-2">
-          {options.map((option, index) => (
-            <input
-              key={index}
-              type="text"
-              className="w-full p-2 border border-blue-600 bg-blue-50 rounded-md focus:outline-blue-500"
-              placeholder={`Opsi ${index + 1}`}
-              value={option}
-              onChange={(e) => {
-                const newOptions = [...options];
-                newOptions[index] = e.target.value;
-                setOptions(newOptions);
-              }}
-            />
-          ))}
-        </div>
+          Buat Soal Tryout
+          <motion.div
+            className="absolute -bottom-2 left-0 h-1 bg-blue-500 rounded-full"
+            initial={{ width: 0 }}
+            animate={{ width: "60px" }}
+            transition={{ delay: 0.4, duration: 0.4 }}
+          />
+        </motion.h2>
 
-        <div className="flex justify-between mt-4">
-          <button className="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600">
-            Batalkan
-          </button>
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
-            Selanjutnya
-          </button>
-        </div>
-      </div>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="space-y-6"
+        >
+          <motion.div variants={itemVariants}>
+            <label className="block mb-2 text-sm font-medium text-blue-900">
+              Soal
+            </label>
+            <motion.textarea
+              className="w-full p-3 border border-blue-400 bg-blue-50 rounded-lg h-32 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+              whileFocus={{ boxShadow: "0 0 0 3px rgba(59, 130, 246, 0.2)" }}
+            ></motion.textarea>
+          </motion.div>
+
+          <motion.div variants={itemVariants} className="space-y-3">
+            <div className="flex justify-between items-center">
+              <label className="block text-sm font-bold text-blue-900">
+                Opsi
+              </label>
+              <motion.button
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-600 flex items-center gap-2 shadow-sm"
+                onClick={addOption}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <FiPlus size={16} /> Buat Opsi
+              </motion.button>
+            </div>
+
+            <motion.div
+              className="border border-blue-400 bg-blue-50 p-4 rounded-lg space-y-3"
+              variants={containerVariants}
+            >
+              <AnimatePresence>
+                {options.map((option, index) => (
+                  <motion.div
+                    key={index}
+                    className="flex items-center gap-2"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, x: -10 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <div className="flex-grow relative">
+                      <motion.input
+                        type="text"
+                        className="w-full p-3 border border-blue-400 bg-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent pr-10"
+                        placeholder={`Opsi ${index + 1}`}
+                        value={option}
+                        onChange={(e) => {
+                          const newOptions = [...options];
+                          newOptions[index] = e.target.value;
+                          setOptions(newOptions);
+                        }}
+                        whileFocus={{
+                          boxShadow: "0 0 0 3px rgba(59, 130, 246, 0.2)",
+                        }}
+                      />
+                      {options.length > 2 && (
+                        <motion.button
+                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-red-500"
+                          onClick={() => removeOption(index)}
+                          whileHover={{ scale: 1.2 }}
+                          whileTap={{ scale: 0.9 }}
+                        >
+                          <FiX size={16} />
+                        </motion.button>
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            variants={itemVariants}
+            className="flex justify-between mt-8 gap-4"
+          >
+            <motion.button
+              className="bg-gray-500 text-white px-5 py-2 rounded-lg hover:bg-gray-600 flex items-center gap-2 shadow-md"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FiArrowLeft size={16} /> Batalkan
+            </motion.button>
+            <motion.button
+              className="bg-blue-500 text-white px-5 py-2 rounded-lg hover:bg-blue-600 flex items-center gap-2 shadow-md"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Selanjutnya <FiArrowRight size={16} />
+            </motion.button>
+          </motion.div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };

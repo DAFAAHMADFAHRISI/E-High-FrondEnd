@@ -63,7 +63,10 @@ export default function App() {
                 <Route path="/Guru/Tryout" element={<GuruTryout />} />
                 <Route path="/Guru/CreateTryout" element={<CreateTryout />} />
                 <Route path="/Guru/EditTryout" element={<EditTryout />} />
-                <Route path="/Guru/Tryout/id" element={<GuruTryoutDetail />} />
+                <Route
+                  path="/Guru/Tryout/id/Detail"
+                  element={<GuruTryoutDetail />}
+                />
                 <Route
                   path="/Guru/Tryout/id/subjek"
                   element={<GuruTryoutSubjek />}
@@ -76,13 +79,13 @@ export default function App() {
                   path="/Guru/EditTryout/id/subjek"
                   element={<EditTryoutSubjek />}
                 />
-                 <Route
+                <Route
                   path="/Guru/EditSoal/CreatePembahasan"
                   element={<EditSoalCreatePembahasan />}
                 />
-                 <Route
+                <Route
                   path="/Guru/tryout/:id/:subjek/ediit_soal/edit_pemabahasan"
-                  element={<EditSoalCreatePembahasan />}
+                  element={<EditPembahasanSoalTryout />}
                 />
               </Routes>
             </Layout>
