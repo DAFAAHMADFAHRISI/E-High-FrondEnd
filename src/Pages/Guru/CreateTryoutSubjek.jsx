@@ -151,7 +151,7 @@ const CreateTryoutSubjek = () => {
               <FiArrowLeft size={16} /> Batalkan
             </motion.button>
             <motion.button
-              className="bg-blue-500 text-white px-5 py-2 rounded-lg hover:bg-blue-600 flex items-center gap-2 shadow-md"
+              className="   bg-blue-500 text-white px-5 py-2 rounded-lg hover:bg-blue-600 flex items-center gap-2 shadow-md"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
