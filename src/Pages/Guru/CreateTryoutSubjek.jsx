@@ -140,7 +140,7 @@ const CreateTryoutSubjek = () => {
           </motion.div>
 
           <motion.div
-            variants={itemVariants}
+            variants={   itemVariants}
             className="flex justify-between mt-8 gap-4"
           >
             <motion.button
