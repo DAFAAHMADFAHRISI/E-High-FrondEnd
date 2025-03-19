@@ -80,7 +80,7 @@ export default function SiswaLandingPage() {
               initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.8, type: "spring" }}
-              className="font-bold text-3xl md:text-4xl leading-tight"
+              className="   cofont-bold text-3xl md:text-4xl leading-tight"
             >
               Bersiaplah Menempuh Jenjang Pendidikan Yang Lebih Tinggi
             </motion.h2>
